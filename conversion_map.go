@@ -2,216 +2,620 @@
 package gofromto
 
 var ConversionMap = map[Unit]map[Unit]Conversion{
-    0: {
-        1: {0,1, func(a float64) float64 { return ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(a)))}, false},
-        2: {0,2, func(a float64) float64 { return ConversionList[3].Conversion(ConversionList[4].Conversion(a))}, false},
-        3: ConversionList[4],
-        4: {0,4, func(a float64) float64 { return ConversionList[5].Conversion(ConversionList[4].Conversion(a))}, false},
-        5: {0,5, func(a float64) float64 { return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(a)))}, false},
-        6: {0,6, func(a float64) float64 { return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(a)))}, false},
-        7: {0,7, func(a float64) float64 { return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(a)))}, false},
-        8: {0,8, func(a float64) float64 { return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(a)))}, false},
-    },
-    1: {
-        0: {1,0, func(a float64) float64 { return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(a)))}, false},
-        2: {1,2, func(a float64) float64 { return ConversionList[3].Conversion(ConversionList[13].Conversion(a))}, false},
-        3: ConversionList[13],
-        4: {1,4, func(a float64) float64 { return ConversionList[5].Conversion(ConversionList[13].Conversion(a))}, false},
-        5: {1,5, func(a float64) float64 { return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(a)))}, false},
-        6: {1,6, func(a float64) float64 { return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(a)))}, false},
-        7: {1,7, func(a float64) float64 { return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(a)))}, false},
-        8: {1,8, func(a float64) float64 { return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(a)))}, false},
-    },
-    2: {
-        0: ConversionList[0],
-        1: ConversionList[1],
-        3: ConversionList[2],
-        4: {2,4, func(a float64) float64 { return ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a)))}, false},
-        5: {2,5, func(a float64) float64 { return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a))))}, false},
-        6: {2,6, func(a float64) float64 { return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a))))}, false},
-        7: {2,7, func(a float64) float64 { return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a))))}, false},
-        8: ConversionList[14],
-    },
-    3: {
-        0: {3,0, func(a float64) float64 { return ConversionList[0].Conversion(ConversionList[3].Conversion(a))}, false},
-        1: {3,1, func(a float64) float64 { return ConversionList[1].Conversion(ConversionList[3].Conversion(a))}, false},
-        2: ConversionList[3],
-        4: ConversionList[5],
-        5: {3,5, func(a float64) float64 { return ConversionList[7].Conversion(ConversionList[5].Conversion(a))}, false},
-        6: {3,6, func(a float64) float64 { return ConversionList[9].Conversion(ConversionList[5].Conversion(a))}, false},
-        7: {3,7, func(a float64) float64 { return ConversionList[11].Conversion(ConversionList[5].Conversion(a))}, false},
-        8: {3,8, func(a float64) float64 { return ConversionList[14].Conversion(ConversionList[3].Conversion(a))}, false},
-    },
-    4: {
-        0: {4,0, func(a float64) float64 { return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a)))}, false},
-        1: {4,1, func(a float64) float64 { return ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a)))}, false},
-        2: {4,2, func(a float64) float64 { return ConversionList[3].Conversion(ConversionList[6].Conversion(a))}, false},
-        3: ConversionList[6],
-        5: ConversionList[7],
-        6: ConversionList[9],
-        7: ConversionList[11],
-        8: {4,8, func(a float64) float64 { return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a)))}, false},
-    },
-    5: {
-        0: {5,0, func(a float64) float64 { return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))}, false},
-        1: {5,1, func(a float64) float64 { return ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))}, false},
-        2: {5,2, func(a float64) float64 { return ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[8].Conversion(a)))}, false},
-        3: {5,3, func(a float64) float64 { return ConversionList[6].Conversion(ConversionList[8].Conversion(a))}, false},
-        4: ConversionList[8],
-        6: {5,6, func(a float64) float64 { return ConversionList[9].Conversion(ConversionList[8].Conversion(a))}, false},
-        7: {5,7, func(a float64) float64 { return ConversionList[11].Conversion(ConversionList[8].Conversion(a))}, false},
-        8: {5,8, func(a float64) float64 { return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))}, false},
-    },
-    6: {
-        0: {6,0, func(a float64) float64 { return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))}, false},
-        1: {6,1, func(a float64) float64 { return ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))}, false},
-        2: {6,2, func(a float64) float64 { return ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[10].Conversion(a)))}, false},
-        3: {6,3, func(a float64) float64 { return ConversionList[6].Conversion(ConversionList[10].Conversion(a))}, false},
-        4: ConversionList[10],
-        5: {6,5, func(a float64) float64 { return ConversionList[7].Conversion(ConversionList[10].Conversion(a))}, false},
-        7: {6,7, func(a float64) float64 { return ConversionList[11].Conversion(ConversionList[10].Conversion(a))}, false},
-        8: {6,8, func(a float64) float64 { return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))}, false},
-    },
-    7: {
-        0: {7,0, func(a float64) float64 { return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))}, false},
-        1: {7,1, func(a float64) float64 { return ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))}, false},
-        2: {7,2, func(a float64) float64 { return ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a)))}, false},
-        3: {7,3, func(a float64) float64 { return ConversionList[6].Conversion(ConversionList[12].Conversion(a))}, false},
-        4: ConversionList[12],
-        5: {7,5, func(a float64) float64 { return ConversionList[7].Conversion(ConversionList[12].Conversion(a))}, false},
-        6: {7,6, func(a float64) float64 { return ConversionList[9].Conversion(ConversionList[12].Conversion(a))}, false},
-        8: {7,8, func(a float64) float64 { return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))}, false},
-    },
-    8: {
-        0: {8,0, func(a float64) float64 { return ConversionList[0].Conversion(ConversionList[15].Conversion(a))}, false},
-        1: {8,1, func(a float64) float64 { return ConversionList[1].Conversion(ConversionList[15].Conversion(a))}, false},
-        2: ConversionList[15],
-        3: {8,3, func(a float64) float64 { return ConversionList[2].Conversion(ConversionList[15].Conversion(a))}, false},
-        4: {8,4, func(a float64) float64 { return ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a))))}, false},
-        5: {8,5, func(a float64) float64 { return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a)))))}, false},
-        6: {8,6, func(a float64) float64 { return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a)))))}, false},
-        7: {8,7, func(a float64) float64 { return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a)))))}, false},
-    },
-    9: {
-        10: ConversionList[16],
-        11: {9,11, func(a float64) float64 { return ConversionList[20].Conversion(ConversionList[16].Conversion(a))}, false},
-        12: {9,12, func(a float64) float64 { return ConversionList[22].Conversion(ConversionList[20].Conversion(ConversionList[16].Conversion(a)))}, false},
-        13: {9,13, func(a float64) float64 { return ConversionList[19].Conversion(ConversionList[16].Conversion(a))}, false},
-    },
-    10: {
-        9: {10,9, func(a float64) float64 { return ConversionList[17].Conversion(ConversionList[19].Conversion(a))}, false},
-        11: ConversionList[20],
-        12: {10,12, func(a float64) float64 { return ConversionList[22].Conversion(ConversionList[20].Conversion(a))}, false},
-        13: ConversionList[19],
-    },
-    11: {
-        9: {11,9, func(a float64) float64 { return ConversionList[17].Conversion(ConversionList[19].Conversion(ConversionList[21].Conversion(a)))}, false},
-        10: ConversionList[21],
-        12: ConversionList[22],
-        13: {11,13, func(a float64) float64 { return ConversionList[19].Conversion(ConversionList[21].Conversion(a))}, false},
-    },
-    12: {
-        9: {12,9, func(a float64) float64 { return ConversionList[17].Conversion(ConversionList[19].Conversion(ConversionList[21].Conversion(ConversionList[23].Conversion(a))))}, false},
-        10: {12,10, func(a float64) float64 { return ConversionList[21].Conversion(ConversionList[23].Conversion(a))}, false},
-        11: ConversionList[23],
-        13: {12,13, func(a float64) float64 { return ConversionList[19].Conversion(ConversionList[21].Conversion(ConversionList[23].Conversion(a)))}, false},
-    },
-    13: {
-        9: ConversionList[17],
-        10: ConversionList[18],
-        11: {13,11, func(a float64) float64 { return ConversionList[20].Conversion(ConversionList[16].Conversion(ConversionList[17].Conversion(a)))}, false},
-        12: {13,12, func(a float64) float64 { return ConversionList[22].Conversion(ConversionList[20].Conversion(ConversionList[16].Conversion(ConversionList[17].Conversion(a))))}, false},
-    },
-    14: {
-        15: ConversionList[24],
-        16: {14,16, func(a float64) float64 { return ConversionList[26].Conversion(ConversionList[24].Conversion(a))}, false},
-        17: {14,17, func(a float64) float64 { return ConversionList[28].Conversion(ConversionList[24].Conversion(a))}, false},
-    },
-    15: {
-        14: ConversionList[25],
-        16: ConversionList[26],
-        17: ConversionList[28],
-    },
-    16: {
-        14: {16,14, func(a float64) float64 { return ConversionList[25].Conversion(ConversionList[27].Conversion(a))}, false},
-        15: ConversionList[27],
-        17: {16,17, func(a float64) float64 { return ConversionList[28].Conversion(ConversionList[27].Conversion(a))}, false},
-    },
-    17: {
-        14: {17,14, func(a float64) float64 { return ConversionList[25].Conversion(ConversionList[29].Conversion(a))}, false},
-        15: ConversionList[29],
-        16: {17,16, func(a float64) float64 { return ConversionList[26].Conversion(ConversionList[29].Conversion(a))}, false},
-    },
-    18: {
-        19: ConversionList[32],
-        20: {18,20, func(a float64) float64 { return ConversionList[34].Conversion(ConversionList[32].Conversion(a))}, false},
-        21: {18,21, func(a float64) float64 { return ConversionList[36].Conversion(ConversionList[34].Conversion(ConversionList[31].Conversion(ConversionList[41].Conversion(ConversionList[40].Conversion(ConversionList[43].Conversion(ConversionList[32].Conversion(a)))))))}, false},
-        22: {18,22, func(a float64) float64 { return ConversionList[38].Conversion(ConversionList[34].Conversion(ConversionList[31].Conversion(ConversionList[41].Conversion(ConversionList[40].Conversion(ConversionList[43].Conversion(ConversionList[32].Conversion(a)))))))}, false},
-        23: {18,23, func(a float64) float64 { return ConversionList[30].Conversion(ConversionList[32].Conversion(a))}, false},
-        24: {18,24, func(a float64) float64 { return ConversionList[40].Conversion(ConversionList[30].Conversion(ConversionList[32].Conversion(a)))}, false},
-        25: {18,25, func(a float64) float64 { return ConversionList[42].Conversion(ConversionList[30].Conversion(ConversionList[32].Conversion(a)))}, false},
-    },
-    19: {
-        18: ConversionList[33],
-        20: ConversionList[34],
-        21: {19,21, func(a float64) float64 { return ConversionList[36].Conversion(ConversionList[34].Conversion(a))}, false},
-        22: {19,22, func(a float64) float64 { return ConversionList[38].Conversion(ConversionList[34].Conversion(a))}, false},
-        23: ConversionList[30],
-        24: {19,24, func(a float64) float64 { return ConversionList[40].Conversion(ConversionList[30].Conversion(a))}, false},
-        25: {19,25, func(a float64) float64 { return ConversionList[42].Conversion(ConversionList[30].Conversion(a))}, false},
-    },
-    20: {
-        18: {20,18, func(a float64) float64 { return ConversionList[33].Conversion(ConversionList[35].Conversion(a))}, false},
-        19: ConversionList[35],
-        21: ConversionList[36],
-        22: ConversionList[38],
-        23: {20,23, func(a float64) float64 { return ConversionList[30].Conversion(ConversionList[35].Conversion(a))}, false},
-        24: {20,24, func(a float64) float64 { return ConversionList[40].Conversion(ConversionList[30].Conversion(ConversionList[35].Conversion(a)))}, false},
-        25: {20,25, func(a float64) float64 { return ConversionList[42].Conversion(ConversionList[30].Conversion(ConversionList[35].Conversion(a)))}, false},
-    },
-    21: {
-        18: {21,18, func(a float64) float64 { return ConversionList[33].Conversion(ConversionList[35].Conversion(ConversionList[37].Conversion(a)))}, false},
-        19: {21,19, func(a float64) float64 { return ConversionList[35].Conversion(ConversionList[37].Conversion(a))}, false},
-        20: ConversionList[37],
-        22: {21,22, func(a float64) float64 { return ConversionList[38].Conversion(ConversionList[37].Conversion(a))}, false},
-        23: {21,23, func(a float64) float64 { return ConversionList[30].Conversion(ConversionList[35].Conversion(ConversionList[37].Conversion(a)))}, false},
-        24: {21,24, func(a float64) float64 { return ConversionList[40].Conversion(ConversionList[30].Conversion(ConversionList[35].Conversion(ConversionList[37].Conversion(a))))}, false},
-        25: {21,25, func(a float64) float64 { return ConversionList[42].Conversion(ConversionList[30].Conversion(ConversionList[35].Conversion(ConversionList[37].Conversion(a))))}, false},
-    },
-    22: {
-        18: {22,18, func(a float64) float64 { return ConversionList[33].Conversion(ConversionList[35].Conversion(ConversionList[39].Conversion(a)))}, false},
-        19: {22,19, func(a float64) float64 { return ConversionList[35].Conversion(ConversionList[39].Conversion(a))}, false},
-        20: ConversionList[39],
-        21: {22,21, func(a float64) float64 { return ConversionList[36].Conversion(ConversionList[39].Conversion(a))}, false},
-        23: {22,23, func(a float64) float64 { return ConversionList[30].Conversion(ConversionList[35].Conversion(ConversionList[39].Conversion(a)))}, false},
-        24: {22,24, func(a float64) float64 { return ConversionList[40].Conversion(ConversionList[30].Conversion(ConversionList[32].Conversion(ConversionList[33].Conversion(ConversionList[35].Conversion(ConversionList[39].Conversion(a))))))}, false},
-        25: {22,25, func(a float64) float64 { return ConversionList[42].Conversion(ConversionList[30].Conversion(ConversionList[32].Conversion(ConversionList[33].Conversion(ConversionList[35].Conversion(ConversionList[39].Conversion(a))))))}, false},
-    },
-    23: {
-        18: {23,18, func(a float64) float64 { return ConversionList[33].Conversion(ConversionList[31].Conversion(a))}, false},
-        19: ConversionList[31],
-        20: {23,20, func(a float64) float64 { return ConversionList[34].Conversion(ConversionList[31].Conversion(a))}, false},
-        21: {23,21, func(a float64) float64 { return ConversionList[36].Conversion(ConversionList[34].Conversion(ConversionList[31].Conversion(ConversionList[41].Conversion(ConversionList[40].Conversion(a)))))}, false},
-        22: {23,22, func(a float64) float64 { return ConversionList[38].Conversion(ConversionList[34].Conversion(ConversionList[31].Conversion(ConversionList[41].Conversion(ConversionList[40].Conversion(a)))))}, false},
-        24: ConversionList[40],
-        25: ConversionList[42],
-    },
-    24: {
-        18: {24,18, func(a float64) float64 { return ConversionList[33].Conversion(ConversionList[31].Conversion(ConversionList[41].Conversion(a)))}, false},
-        19: {24,19, func(a float64) float64 { return ConversionList[31].Conversion(ConversionList[41].Conversion(a))}, false},
-        20: {24,20, func(a float64) float64 { return ConversionList[34].Conversion(ConversionList[31].Conversion(ConversionList[41].Conversion(a)))}, false},
-        21: {24,21, func(a float64) float64 { return ConversionList[36].Conversion(ConversionList[34].Conversion(ConversionList[31].Conversion(ConversionList[41].Conversion(a))))}, false},
-        22: {24,22, func(a float64) float64 { return ConversionList[38].Conversion(ConversionList[34].Conversion(ConversionList[31].Conversion(ConversionList[41].Conversion(a))))}, false},
-        23: ConversionList[41],
-        25: {24,25, func(a float64) float64 { return ConversionList[42].Conversion(ConversionList[41].Conversion(a))}, false},
-    },
-    25: {
-        18: {25,18, func(a float64) float64 { return ConversionList[33].Conversion(ConversionList[31].Conversion(ConversionList[43].Conversion(a)))}, false},
-        19: {25,19, func(a float64) float64 { return ConversionList[31].Conversion(ConversionList[43].Conversion(a))}, false},
-        20: {25,20, func(a float64) float64 { return ConversionList[34].Conversion(ConversionList[31].Conversion(ConversionList[43].Conversion(a)))}, false},
-        21: {25,21, func(a float64) float64 { return ConversionList[36].Conversion(ConversionList[34].Conversion(ConversionList[31].Conversion(ConversionList[41].Conversion(ConversionList[40].Conversion(ConversionList[43].Conversion(a))))))}, false},
-        22: {25,22, func(a float64) float64 { return ConversionList[38].Conversion(ConversionList[34].Conversion(ConversionList[31].Conversion(ConversionList[41].Conversion(ConversionList[40].Conversion(ConversionList[43].Conversion(a))))))}, false},
-        23: ConversionList[43],
-        24: {25,24, func(a float64) float64 { return ConversionList[40].Conversion(ConversionList[43].Conversion(a))}, false},
-    },
+	0: {
+		1: {0, 1, func(a float64) float64 {
+			return ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(a)))
+		}, false},
+		2: {0, 2, func(a float64) float64 {
+			return ConversionList[16].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(a))))
+		}, false},
+		3: {0, 3, func(a float64) float64 {
+			return ConversionList[18].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(a))))
+		}, false},
+		4: {0, 4, func(a float64) float64 {
+			return ConversionList[20].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(a))))
+		}, false},
+		5: {0, 5, func(a float64) float64 {
+			return ConversionList[22].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(a))))
+		}, false},
+		6: {0, 6, func(a float64) float64 {
+			return ConversionList[24].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(a))))
+		}, false},
+		7: {0, 7, func(a float64) float64 { return ConversionList[3].Conversion(ConversionList[4].Conversion(a)) }, false},
+		8: ConversionList[4],
+		9: {0, 9, func(a float64) float64 { return ConversionList[5].Conversion(ConversionList[4].Conversion(a)) }, false},
+		10: {0, 10, func(a float64) float64 {
+			return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(a)))
+		}, false},
+		11: {0, 11, func(a float64) float64 {
+			return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(a)))
+		}, false},
+		12: {0, 12, func(a float64) float64 {
+			return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(a)))
+		}, false},
+		13: {0, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(a)))
+		}, false},
+	},
+	1: {
+		0: {1, 0, func(a float64) float64 {
+			return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(a)))))
+		}, false},
+		2: ConversionList[16],
+		3: ConversionList[18],
+		4: ConversionList[20],
+		5: ConversionList[22],
+		6: ConversionList[24],
+		7: {1, 7, func(a float64) float64 {
+			return ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(a))))
+		}, false},
+		8: ConversionList[13],
+		9: {1, 9, func(a float64) float64 {
+			return ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(a))))
+		}, false},
+		10: {1, 10, func(a float64) float64 {
+			return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(a)))))
+		}, false},
+		11: {1, 11, func(a float64) float64 {
+			return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(a)))))
+		}, false},
+		12: {1, 12, func(a float64) float64 {
+			return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(a)))))
+		}, false},
+		13: {1, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(a)))))
+		}, false},
+	},
+	2: {
+		0: {2, 0, func(a float64) float64 {
+			return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[17].Conversion(a))))))
+		}, false},
+		1: ConversionList[17],
+		3: {2, 3, func(a float64) float64 { return ConversionList[18].Conversion(ConversionList[17].Conversion(a)) }, false},
+		4: {2, 4, func(a float64) float64 { return ConversionList[20].Conversion(ConversionList[17].Conversion(a)) }, false},
+		5: {2, 5, func(a float64) float64 { return ConversionList[22].Conversion(ConversionList[17].Conversion(a)) }, false},
+		6: {2, 6, func(a float64) float64 { return ConversionList[24].Conversion(ConversionList[17].Conversion(a)) }, false},
+		7: {2, 7, func(a float64) float64 {
+			return ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(ConversionList[20].Conversion(ConversionList[17].Conversion(a)))))
+		}, false},
+		8: {2, 8, func(a float64) float64 { return ConversionList[13].Conversion(ConversionList[17].Conversion(a)) }, false},
+		9: {2, 9, func(a float64) float64 {
+			return ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(ConversionList[20].Conversion(ConversionList[17].Conversion(a)))))
+		}, false},
+		10: {2, 10, func(a float64) float64 {
+			return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[17].Conversion(a))))))
+		}, false},
+		11: {2, 11, func(a float64) float64 {
+			return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[17].Conversion(a))))))
+		}, false},
+		12: {2, 12, func(a float64) float64 {
+			return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[17].Conversion(a))))))
+		}, false},
+		13: {2, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[17].Conversion(a))))))
+		}, false},
+	},
+	3: {
+		0: {3, 0, func(a float64) float64 {
+			return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[19].Conversion(a))))))
+		}, false},
+		1: ConversionList[19],
+		2: {3, 2, func(a float64) float64 { return ConversionList[16].Conversion(ConversionList[19].Conversion(a)) }, false},
+		4: {3, 4, func(a float64) float64 { return ConversionList[20].Conversion(ConversionList[19].Conversion(a)) }, false},
+		5: {3, 5, func(a float64) float64 { return ConversionList[22].Conversion(ConversionList[19].Conversion(a)) }, false},
+		6: {3, 6, func(a float64) float64 { return ConversionList[24].Conversion(ConversionList[19].Conversion(a)) }, false},
+		7: {3, 7, func(a float64) float64 {
+			return ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(ConversionList[20].Conversion(ConversionList[19].Conversion(a)))))
+		}, false},
+		8: {3, 8, func(a float64) float64 { return ConversionList[13].Conversion(ConversionList[19].Conversion(a)) }, false},
+		9: {3, 9, func(a float64) float64 {
+			return ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(ConversionList[20].Conversion(ConversionList[19].Conversion(a)))))
+		}, false},
+		10: {3, 10, func(a float64) float64 {
+			return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[19].Conversion(a))))))
+		}, false},
+		11: {3, 11, func(a float64) float64 {
+			return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[19].Conversion(a))))))
+		}, false},
+		12: {3, 12, func(a float64) float64 {
+			return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[19].Conversion(a))))))
+		}, false},
+		13: {3, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[19].Conversion(a))))))
+		}, false},
+	},
+	4: {
+		0: {4, 0, func(a float64) float64 {
+			return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(a))))
+		}, false},
+		1: ConversionList[21],
+		2: {4, 2, func(a float64) float64 { return ConversionList[16].Conversion(ConversionList[21].Conversion(a)) }, false},
+		3: {4, 3, func(a float64) float64 { return ConversionList[18].Conversion(ConversionList[21].Conversion(a)) }, false},
+		5: {4, 5, func(a float64) float64 { return ConversionList[22].Conversion(ConversionList[21].Conversion(a)) }, false},
+		6: {4, 6, func(a float64) float64 { return ConversionList[24].Conversion(ConversionList[21].Conversion(a)) }, false},
+		7: {4, 7, func(a float64) float64 {
+			return ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(a)))
+		}, false},
+		8: {4, 8, func(a float64) float64 { return ConversionList[13].Conversion(ConversionList[21].Conversion(a)) }, false},
+		9: {4, 9, func(a float64) float64 {
+			return ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(a)))
+		}, false},
+		10: {4, 10, func(a float64) float64 {
+			return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(a))))
+		}, false},
+		11: {4, 11, func(a float64) float64 {
+			return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(a))))
+		}, false},
+		12: {4, 12, func(a float64) float64 {
+			return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(a))))
+		}, false},
+		13: {4, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[21].Conversion(a))))
+		}, false},
+	},
+	5: {
+		0: {5, 0, func(a float64) float64 {
+			return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[17].Conversion(a))))))
+		}, false},
+		1: ConversionList[23],
+		2: {5, 2, func(a float64) float64 { return ConversionList[16].Conversion(ConversionList[23].Conversion(a)) }, false},
+		3: {5, 3, func(a float64) float64 { return ConversionList[18].Conversion(ConversionList[23].Conversion(a)) }, false},
+		4: {5, 4, func(a float64) float64 { return ConversionList[20].Conversion(ConversionList[23].Conversion(a)) }, false},
+		6: {5, 6, func(a float64) float64 { return ConversionList[24].Conversion(ConversionList[23].Conversion(a)) }, false},
+		7: {5, 7, func(a float64) float64 {
+			return ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[23].Conversion(a)))))
+		}, false},
+		8: {5, 8, func(a float64) float64 { return ConversionList[13].Conversion(ConversionList[23].Conversion(a)) }, false},
+		9: {5, 9, func(a float64) float64 {
+			return ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[23].Conversion(a)))))
+		}, false},
+		10: {5, 10, func(a float64) float64 {
+			return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[17].Conversion(a))))))
+		}, false},
+		11: {5, 11, func(a float64) float64 {
+			return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[17].Conversion(a))))))
+		}, false},
+		12: {5, 12, func(a float64) float64 {
+			return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[17].Conversion(a))))))
+		}, false},
+		13: {5, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(ConversionList[24].Conversion(ConversionList[17].Conversion(a))))))
+		}, false},
+	},
+	6: {
+		0: {6, 0, func(a float64) float64 {
+			return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(a))))
+		}, false},
+		1: ConversionList[25],
+		2: {6, 2, func(a float64) float64 { return ConversionList[16].Conversion(ConversionList[25].Conversion(a)) }, false},
+		3: {6, 3, func(a float64) float64 { return ConversionList[18].Conversion(ConversionList[25].Conversion(a)) }, false},
+		4: {6, 4, func(a float64) float64 { return ConversionList[20].Conversion(ConversionList[25].Conversion(a)) }, false},
+		5: {6, 5, func(a float64) float64 { return ConversionList[22].Conversion(ConversionList[25].Conversion(a)) }, false},
+		7: {6, 7, func(a float64) float64 {
+			return ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(a)))
+		}, false},
+		8: {6, 8, func(a float64) float64 { return ConversionList[13].Conversion(ConversionList[25].Conversion(a)) }, false},
+		9: {6, 9, func(a float64) float64 {
+			return ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(a)))
+		}, false},
+		10: {6, 10, func(a float64) float64 {
+			return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(a))))
+		}, false},
+		11: {6, 11, func(a float64) float64 {
+			return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(a))))
+		}, false},
+		12: {6, 12, func(a float64) float64 {
+			return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(a))))
+		}, false},
+		13: {6, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[13].Conversion(ConversionList[25].Conversion(a))))
+		}, false},
+	},
+	7: {
+		0: ConversionList[0],
+		1: ConversionList[1],
+		2: {7, 2, func(a float64) float64 {
+			return ConversionList[16].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a)))))
+		}, false},
+		3: {7, 3, func(a float64) float64 {
+			return ConversionList[18].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a)))))
+		}, false},
+		4: {7, 4, func(a float64) float64 {
+			return ConversionList[20].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a)))))
+		}, false},
+		5: {7, 5, func(a float64) float64 {
+			return ConversionList[22].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a)))))
+		}, false},
+		6: {7, 6, func(a float64) float64 {
+			return ConversionList[24].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a)))))
+		}, false},
+		8: ConversionList[2],
+		9: {7, 9, func(a float64) float64 {
+			return ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a)))
+		}, false},
+		10: {7, 10, func(a float64) float64 {
+			return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a))))
+		}, false},
+		11: {7, 11, func(a float64) float64 {
+			return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a))))
+		}, false},
+		12: {7, 12, func(a float64) float64 {
+			return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(a))))
+		}, false},
+		13: ConversionList[14],
+	},
+	8: {
+		0: {8, 0, func(a float64) float64 { return ConversionList[0].Conversion(ConversionList[3].Conversion(a)) }, false},
+		1: {8, 1, func(a float64) float64 { return ConversionList[1].Conversion(ConversionList[3].Conversion(a)) }, false},
+		2: {8, 2, func(a float64) float64 {
+			return ConversionList[16].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(a)))
+		}, false},
+		3: {8, 3, func(a float64) float64 {
+			return ConversionList[18].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(a)))
+		}, false},
+		4: {8, 4, func(a float64) float64 {
+			return ConversionList[20].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(a)))
+		}, false},
+		5: {8, 5, func(a float64) float64 {
+			return ConversionList[22].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(a)))
+		}, false},
+		6: {8, 6, func(a float64) float64 {
+			return ConversionList[24].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(a)))
+		}, false},
+		7:  ConversionList[3],
+		9:  ConversionList[5],
+		10: {8, 10, func(a float64) float64 { return ConversionList[7].Conversion(ConversionList[5].Conversion(a)) }, false},
+		11: {8, 11, func(a float64) float64 { return ConversionList[9].Conversion(ConversionList[5].Conversion(a)) }, false},
+		12: {8, 12, func(a float64) float64 { return ConversionList[11].Conversion(ConversionList[5].Conversion(a)) }, false},
+		13: {8, 13, func(a float64) float64 { return ConversionList[14].Conversion(ConversionList[3].Conversion(a)) }, false},
+	},
+	9: {
+		0: {9, 0, func(a float64) float64 {
+			return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a)))
+		}, false},
+		1: {9, 1, func(a float64) float64 {
+			return ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a)))
+		}, false},
+		2: {9, 2, func(a float64) float64 {
+			return ConversionList[16].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a))))
+		}, false},
+		3: {9, 3, func(a float64) float64 {
+			return ConversionList[18].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a))))
+		}, false},
+		4: {9, 4, func(a float64) float64 {
+			return ConversionList[20].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a))))
+		}, false},
+		5: {9, 5, func(a float64) float64 {
+			return ConversionList[22].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a))))
+		}, false},
+		6: {9, 6, func(a float64) float64 {
+			return ConversionList[24].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a))))
+		}, false},
+		7:  {9, 7, func(a float64) float64 { return ConversionList[3].Conversion(ConversionList[6].Conversion(a)) }, false},
+		8:  ConversionList[6],
+		10: ConversionList[7],
+		11: ConversionList[9],
+		12: ConversionList[11],
+		13: {9, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(a)))
+		}, false},
+	},
+	10: {
+		0: {10, 0, func(a float64) float64 {
+			return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[8].Conversion(a))))
+		}, false},
+		1: {10, 1, func(a float64) float64 {
+			return ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[8].Conversion(a))))
+		}, false},
+		2: {10, 2, func(a float64) float64 {
+			return ConversionList[16].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[8].Conversion(a))))))))
+		}, false},
+		3: {10, 3, func(a float64) float64 {
+			return ConversionList[18].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[8].Conversion(a))))))))
+		}, false},
+		4: {10, 4, func(a float64) float64 {
+			return ConversionList[20].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[8].Conversion(a))))))))
+		}, false},
+		5: {10, 5, func(a float64) float64 {
+			return ConversionList[22].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[8].Conversion(a))))))))
+		}, false},
+		6: {10, 6, func(a float64) float64 {
+			return ConversionList[24].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[8].Conversion(a))))))))
+		}, false},
+		7: {10, 7, func(a float64) float64 {
+			return ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[8].Conversion(a)))
+		}, false},
+		8:  {10, 8, func(a float64) float64 { return ConversionList[6].Conversion(ConversionList[8].Conversion(a)) }, false},
+		9:  ConversionList[8],
+		11: {10, 11, func(a float64) float64 { return ConversionList[9].Conversion(ConversionList[8].Conversion(a)) }, false},
+		12: {10, 12, func(a float64) float64 { return ConversionList[11].Conversion(ConversionList[8].Conversion(a)) }, false},
+		13: {10, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[8].Conversion(a))))
+		}, false},
+	},
+	11: {
+		0: {11, 0, func(a float64) float64 {
+			return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(ConversionList[11].Conversion(ConversionList[10].Conversion(a))))))
+		}, false},
+		1: {11, 1, func(a float64) float64 {
+			return ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(ConversionList[11].Conversion(ConversionList[10].Conversion(a))))))
+		}, false},
+		2: {11, 2, func(a float64) float64 {
+			return ConversionList[16].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(ConversionList[11].Conversion(ConversionList[10].Conversion(a))))))))))
+		}, false},
+		3: {11, 3, func(a float64) float64 {
+			return ConversionList[18].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(ConversionList[11].Conversion(ConversionList[10].Conversion(a))))))))))
+		}, false},
+		4: {11, 4, func(a float64) float64 {
+			return ConversionList[20].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(ConversionList[11].Conversion(ConversionList[10].Conversion(a))))))))))
+		}, false},
+		5: {11, 5, func(a float64) float64 {
+			return ConversionList[22].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(ConversionList[11].Conversion(ConversionList[10].Conversion(a))))))))))
+		}, false},
+		6: {11, 6, func(a float64) float64 {
+			return ConversionList[24].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(ConversionList[11].Conversion(ConversionList[10].Conversion(a))))))))))
+		}, false},
+		7: {11, 7, func(a float64) float64 {
+			return ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[10].Conversion(a)))
+		}, false},
+		8:  {11, 8, func(a float64) float64 { return ConversionList[6].Conversion(ConversionList[10].Conversion(a)) }, false},
+		9:  ConversionList[10],
+		10: {11, 10, func(a float64) float64 { return ConversionList[7].Conversion(ConversionList[10].Conversion(a)) }, false},
+		12: {11, 12, func(a float64) float64 { return ConversionList[11].Conversion(ConversionList[10].Conversion(a)) }, false},
+		13: {11, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(ConversionList[11].Conversion(ConversionList[10].Conversion(a))))))
+		}, false},
+	},
+	12: {
+		0: {12, 0, func(a float64) float64 {
+			return ConversionList[0].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))
+		}, false},
+		1: {12, 1, func(a float64) float64 {
+			return ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))
+		}, false},
+		2: {12, 2, func(a float64) float64 {
+			return ConversionList[16].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))))))
+		}, false},
+		3: {12, 3, func(a float64) float64 {
+			return ConversionList[18].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))))))
+		}, false},
+		4: {12, 4, func(a float64) float64 {
+			return ConversionList[20].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))))))
+		}, false},
+		5: {12, 5, func(a float64) float64 {
+			return ConversionList[22].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))))))
+		}, false},
+		6: {12, 6, func(a float64) float64 {
+			return ConversionList[24].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))))))
+		}, false},
+		7: {12, 7, func(a float64) float64 {
+			return ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a)))
+		}, false},
+		8:  {12, 8, func(a float64) float64 { return ConversionList[6].Conversion(ConversionList[12].Conversion(a)) }, false},
+		9:  ConversionList[12],
+		10: {12, 10, func(a float64) float64 { return ConversionList[7].Conversion(ConversionList[12].Conversion(a)) }, false},
+		11: {12, 11, func(a float64) float64 { return ConversionList[9].Conversion(ConversionList[12].Conversion(a)) }, false},
+		13: {12, 13, func(a float64) float64 {
+			return ConversionList[14].Conversion(ConversionList[3].Conversion(ConversionList[6].Conversion(ConversionList[12].Conversion(a))))
+		}, false},
+	},
+	13: {
+		0: {13, 0, func(a float64) float64 { return ConversionList[0].Conversion(ConversionList[15].Conversion(a)) }, false},
+		1: {13, 1, func(a float64) float64 { return ConversionList[1].Conversion(ConversionList[15].Conversion(a)) }, false},
+		2: {13, 2, func(a float64) float64 {
+			return ConversionList[16].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a))))))
+		}, false},
+		3: {13, 3, func(a float64) float64 {
+			return ConversionList[18].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a))))))
+		}, false},
+		4: {13, 4, func(a float64) float64 {
+			return ConversionList[20].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a))))))
+		}, false},
+		5: {13, 5, func(a float64) float64 {
+			return ConversionList[22].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a))))))
+		}, false},
+		6: {13, 6, func(a float64) float64 {
+			return ConversionList[24].Conversion(ConversionList[1].Conversion(ConversionList[3].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a))))))
+		}, false},
+		7: ConversionList[15],
+		8: {13, 8, func(a float64) float64 { return ConversionList[2].Conversion(ConversionList[15].Conversion(a)) }, false},
+		9: {13, 9, func(a float64) float64 {
+			return ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a))))
+		}, false},
+		10: {13, 10, func(a float64) float64 {
+			return ConversionList[7].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a)))))
+		}, false},
+		11: {13, 11, func(a float64) float64 {
+			return ConversionList[9].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a)))))
+		}, false},
+		12: {13, 12, func(a float64) float64 {
+			return ConversionList[11].Conversion(ConversionList[5].Conversion(ConversionList[4].Conversion(ConversionList[0].Conversion(ConversionList[15].Conversion(a)))))
+		}, false},
+	},
+	14: {
+		15: ConversionList[26],
+		16: {14, 16, func(a float64) float64 { return ConversionList[30].Conversion(ConversionList[26].Conversion(a)) }, false},
+		17: {14, 17, func(a float64) float64 {
+			return ConversionList[32].Conversion(ConversionList[30].Conversion(ConversionList[28].Conversion(ConversionList[29].Conversion(ConversionList[26].Conversion(a)))))
+		}, false},
+		18: {14, 18, func(a float64) float64 { return ConversionList[29].Conversion(ConversionList[26].Conversion(a)) }, false},
+	},
+	15: {
+		14: {15, 14, func(a float64) float64 { return ConversionList[27].Conversion(ConversionList[29].Conversion(a)) }, false},
+		16: ConversionList[30],
+		17: {15, 17, func(a float64) float64 {
+			return ConversionList[32].Conversion(ConversionList[30].Conversion(ConversionList[28].Conversion(ConversionList[29].Conversion(a))))
+		}, false},
+		18: ConversionList[29],
+	},
+	16: {
+		14: {16, 14, func(a float64) float64 {
+			return ConversionList[27].Conversion(ConversionList[29].Conversion(ConversionList[31].Conversion(a)))
+		}, false},
+		15: ConversionList[31],
+		17: ConversionList[32],
+		18: {16, 18, func(a float64) float64 { return ConversionList[29].Conversion(ConversionList[31].Conversion(a)) }, false},
+	},
+	17: {
+		14: {17, 14, func(a float64) float64 {
+			return ConversionList[27].Conversion(ConversionList[29].Conversion(ConversionList[31].Conversion(ConversionList[33].Conversion(a))))
+		}, false},
+		15: {17, 15, func(a float64) float64 { return ConversionList[31].Conversion(ConversionList[33].Conversion(a)) }, false},
+		16: ConversionList[33],
+		18: {17, 18, func(a float64) float64 {
+			return ConversionList[29].Conversion(ConversionList[31].Conversion(ConversionList[33].Conversion(a)))
+		}, false},
+	},
+	18: {
+		14: ConversionList[27],
+		15: ConversionList[28],
+		16: {18, 16, func(a float64) float64 { return ConversionList[30].Conversion(ConversionList[28].Conversion(a)) }, false},
+		17: {18, 17, func(a float64) float64 {
+			return ConversionList[32].Conversion(ConversionList[30].Conversion(ConversionList[28].Conversion(a)))
+		}, false},
+	},
+	19: {
+		20: ConversionList[34],
+		21: {19, 21, func(a float64) float64 { return ConversionList[36].Conversion(ConversionList[34].Conversion(a)) }, false},
+		22: {19, 22, func(a float64) float64 { return ConversionList[38].Conversion(ConversionList[34].Conversion(a)) }, false},
+	},
+	20: {
+		19: ConversionList[35],
+		21: ConversionList[36],
+		22: ConversionList[38],
+	},
+	21: {
+		19: {21, 19, func(a float64) float64 { return ConversionList[35].Conversion(ConversionList[37].Conversion(a)) }, false},
+		20: ConversionList[37],
+		22: {21, 22, func(a float64) float64 { return ConversionList[38].Conversion(ConversionList[37].Conversion(a)) }, false},
+	},
+	22: {
+		19: {22, 19, func(a float64) float64 { return ConversionList[35].Conversion(ConversionList[39].Conversion(a)) }, false},
+		20: ConversionList[39],
+		21: {22, 21, func(a float64) float64 { return ConversionList[36].Conversion(ConversionList[39].Conversion(a)) }, false},
+	},
+	23: {
+		24: ConversionList[42],
+		25: {23, 25, func(a float64) float64 { return ConversionList[44].Conversion(ConversionList[42].Conversion(a)) }, false},
+		26: {23, 26, func(a float64) float64 {
+			return ConversionList[46].Conversion(ConversionList[44].Conversion(ConversionList[42].Conversion(a)))
+		}, false},
+		27: {23, 27, func(a float64) float64 {
+			return ConversionList[48].Conversion(ConversionList[44].Conversion(ConversionList[42].Conversion(a)))
+		}, false},
+		28: {23, 28, func(a float64) float64 { return ConversionList[40].Conversion(ConversionList[42].Conversion(a)) }, false},
+		29: {23, 29, func(a float64) float64 {
+			return ConversionList[50].Conversion(ConversionList[40].Conversion(ConversionList[42].Conversion(a)))
+		}, false},
+		30: {23, 30, func(a float64) float64 {
+			return ConversionList[52].Conversion(ConversionList[40].Conversion(ConversionList[42].Conversion(a)))
+		}, false},
+	},
+	24: {
+		23: ConversionList[43],
+		25: ConversionList[44],
+		26: {24, 26, func(a float64) float64 {
+			return ConversionList[46].Conversion(ConversionList[44].Conversion(ConversionList[42].Conversion(ConversionList[43].Conversion(a))))
+		}, false},
+		27: {24, 27, func(a float64) float64 {
+			return ConversionList[48].Conversion(ConversionList[44].Conversion(ConversionList[42].Conversion(ConversionList[43].Conversion(a))))
+		}, false},
+		28: ConversionList[40],
+		29: {24, 29, func(a float64) float64 { return ConversionList[50].Conversion(ConversionList[40].Conversion(a)) }, false},
+		30: {24, 30, func(a float64) float64 { return ConversionList[52].Conversion(ConversionList[40].Conversion(a)) }, false},
+	},
+	25: {
+		23: {25, 23, func(a float64) float64 { return ConversionList[43].Conversion(ConversionList[45].Conversion(a)) }, false},
+		24: ConversionList[45],
+		26: ConversionList[46],
+		27: ConversionList[48],
+		28: {25, 28, func(a float64) float64 { return ConversionList[40].Conversion(ConversionList[45].Conversion(a)) }, false},
+		29: {25, 29, func(a float64) float64 {
+			return ConversionList[50].Conversion(ConversionList[40].Conversion(ConversionList[45].Conversion(a)))
+		}, false},
+		30: {25, 30, func(a float64) float64 {
+			return ConversionList[52].Conversion(ConversionList[40].Conversion(ConversionList[45].Conversion(a)))
+		}, false},
+	},
+	26: {
+		23: {26, 23, func(a float64) float64 {
+			return ConversionList[43].Conversion(ConversionList[45].Conversion(ConversionList[47].Conversion(a)))
+		}, false},
+		24: {26, 24, func(a float64) float64 { return ConversionList[45].Conversion(ConversionList[47].Conversion(a)) }, false},
+		25: ConversionList[47],
+		27: {26, 27, func(a float64) float64 { return ConversionList[48].Conversion(ConversionList[47].Conversion(a)) }, false},
+		28: {26, 28, func(a float64) float64 {
+			return ConversionList[40].Conversion(ConversionList[45].Conversion(ConversionList[47].Conversion(a)))
+		}, false},
+		29: {26, 29, func(a float64) float64 {
+			return ConversionList[50].Conversion(ConversionList[40].Conversion(ConversionList[45].Conversion(ConversionList[47].Conversion(a))))
+		}, false},
+		30: {26, 30, func(a float64) float64 {
+			return ConversionList[52].Conversion(ConversionList[40].Conversion(ConversionList[45].Conversion(ConversionList[47].Conversion(a))))
+		}, false},
+	},
+	27: {
+		23: {27, 23, func(a float64) float64 {
+			return ConversionList[43].Conversion(ConversionList[45].Conversion(ConversionList[49].Conversion(a)))
+		}, false},
+		24: {27, 24, func(a float64) float64 { return ConversionList[45].Conversion(ConversionList[49].Conversion(a)) }, false},
+		25: ConversionList[49],
+		26: {27, 26, func(a float64) float64 { return ConversionList[46].Conversion(ConversionList[49].Conversion(a)) }, false},
+		28: {27, 28, func(a float64) float64 {
+			return ConversionList[40].Conversion(ConversionList[45].Conversion(ConversionList[49].Conversion(a)))
+		}, false},
+		29: {27, 29, func(a float64) float64 {
+			return ConversionList[50].Conversion(ConversionList[40].Conversion(ConversionList[45].Conversion(ConversionList[49].Conversion(a))))
+		}, false},
+		30: {27, 30, func(a float64) float64 {
+			return ConversionList[52].Conversion(ConversionList[40].Conversion(ConversionList[45].Conversion(ConversionList[49].Conversion(a))))
+		}, false},
+	},
+	28: {
+		23: {28, 23, func(a float64) float64 { return ConversionList[43].Conversion(ConversionList[41].Conversion(a)) }, false},
+		24: ConversionList[41],
+		25: {28, 25, func(a float64) float64 { return ConversionList[44].Conversion(ConversionList[41].Conversion(a)) }, false},
+		26: {28, 26, func(a float64) float64 {
+			return ConversionList[46].Conversion(ConversionList[44].Conversion(ConversionList[41].Conversion(a)))
+		}, false},
+		27: {28, 27, func(a float64) float64 {
+			return ConversionList[48].Conversion(ConversionList[44].Conversion(ConversionList[41].Conversion(a)))
+		}, false},
+		29: ConversionList[50],
+		30: ConversionList[52],
+	},
+	29: {
+		23: {29, 23, func(a float64) float64 {
+			return ConversionList[43].Conversion(ConversionList[41].Conversion(ConversionList[51].Conversion(a)))
+		}, false},
+		24: {29, 24, func(a float64) float64 { return ConversionList[41].Conversion(ConversionList[51].Conversion(a)) }, false},
+		25: {29, 25, func(a float64) float64 {
+			return ConversionList[44].Conversion(ConversionList[41].Conversion(ConversionList[51].Conversion(a)))
+		}, false},
+		26: {29, 26, func(a float64) float64 {
+			return ConversionList[46].Conversion(ConversionList[44].Conversion(ConversionList[41].Conversion(ConversionList[53].Conversion(ConversionList[52].Conversion(ConversionList[51].Conversion(a))))))
+		}, false},
+		27: {29, 27, func(a float64) float64 {
+			return ConversionList[48].Conversion(ConversionList[44].Conversion(ConversionList[41].Conversion(ConversionList[53].Conversion(ConversionList[52].Conversion(ConversionList[51].Conversion(a))))))
+		}, false},
+		28: ConversionList[51],
+		30: {29, 30, func(a float64) float64 { return ConversionList[52].Conversion(ConversionList[51].Conversion(a)) }, false},
+	},
+	30: {
+		23: {30, 23, func(a float64) float64 {
+			return ConversionList[43].Conversion(ConversionList[41].Conversion(ConversionList[53].Conversion(a)))
+		}, false},
+		24: {30, 24, func(a float64) float64 { return ConversionList[41].Conversion(ConversionList[53].Conversion(a)) }, false},
+		25: {30, 25, func(a float64) float64 {
+			return ConversionList[44].Conversion(ConversionList[41].Conversion(ConversionList[53].Conversion(a)))
+		}, false},
+		26: {30, 26, func(a float64) float64 {
+			return ConversionList[46].Conversion(ConversionList[44].Conversion(ConversionList[41].Conversion(ConversionList[53].Conversion(a))))
+		}, false},
+		27: {30, 27, func(a float64) float64 {
+			return ConversionList[48].Conversion(ConversionList[44].Conversion(ConversionList[41].Conversion(ConversionList[53].Conversion(a))))
+		}, false},
+		28: ConversionList[53],
+		29: {30, 29, func(a float64) float64 { return ConversionList[50].Conversion(ConversionList[53].Conversion(a)) }, false},
+	},
 }
