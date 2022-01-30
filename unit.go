@@ -16,6 +16,11 @@ func (u Unit) Symbol() string {
 const (
 	Tablespoon Unit = iota
 	Teaspoon
+	Hint
+	Drop
+	Smidgen
+	Pinch
+	Dash
 	Cup
 	Milliliter
 	Liter
@@ -46,6 +51,11 @@ const (
 var UnitName = map[Unit]string{
 	Tablespoon: "Tablespoon",
 	Teaspoon:   "Teaspoon",
+	Hint:       "Hint",
+	Drop:       "Drop",
+	Smidgen:    "Smidgen",
+	Pinch:      "Pinch",
+	Dash:       "Dash",
 	Cup:        "Cup",
 	Milliliter: "Milliliter",
 	Liter:      "Liter",
@@ -76,6 +86,11 @@ var UnitName = map[Unit]string{
 var UnitSymbol = map[Unit]string{
 	Tablespoon: "tbsp",
 	Teaspoon:   "tsp",
+	Hint:       "hint",
+	Drop:       "dr.",
+	Smidgen:    "smdg.",
+	Pinch:      "pn.",
+	Dash:       "ds.",
 	Cup:        "cups",
 	Milliliter: "mL",
 	Liter:      "L",
