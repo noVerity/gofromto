@@ -1,8 +1,8 @@
 # GoFromTo
 
-GoFromTo is a small library to convert different from and to different units.
+GoFromTo is a small library to convert from and to different units.
 
-Created for practice and personal user, not guaranteed to be complete or correct.
+Created for practice and personal use, not guaranteed to be complete or correct.
 
 ## Installation
 
