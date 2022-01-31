@@ -41,6 +41,19 @@ convertedMeasure := measure.To(gofromto.Milliliter)
 fmt.Print(convertedMeasure.String())
 ```
 
+### Choose nice looking unit
+
+You can run `Nice()` on a `Measure` to switch between related units (e.g. cm, m, km etc.) for the
+unit that provides the smallest number above 1
+```go
+// Create the current unit you have
+measure := gofromto.ParseMeasure("1000mm Distance")
+// Convert it to a nice looking unit
+convertedMeasure := measure.Nice()
+fmt.Print(convertedMeasure.String())
+// Prints "1m Distance"
+```
+
 ## Development
 
 ### Conversions

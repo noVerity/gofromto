@@ -63,9 +63,9 @@ func ParseMeasure(measureString string) (Measure, error) {
 }
 
 // To converts the current measure to the given unit and returns a new Measure with the result
-func (m *Measure) To(targetUnit Unit) (Measure, error) {
+func (m Measure) To(targetUnit Unit) (Measure, error) {
 	if m.Unit == targetUnit {
-		return *m, nil
+		return m, nil
 	}
 
 	if toMap, prs := ConversionMap[m.Unit]; prs {
@@ -79,8 +79,44 @@ func (m *Measure) To(targetUnit Unit) (Measure, error) {
 	return measure, errors.New("no conversion found")
 }
 
+// Nice returns a copy in a related unit providing a nicer number
+func (m Measure) Nice() Measure {
+	groupings := append(MetricGroupings, ImperialGroupings...)
+	var foundGrouping []Unit
+
+	for _, grouping := range groupings {
+		for _, unit := range grouping {
+			if unit == m.Unit {
+				foundGrouping = grouping
+				break
+			}
+		}
+		if foundGrouping != nil {
+			break
+		}
+	}
+
+	if foundGrouping == nil {
+		mCopy := m
+		return mCopy
+	}
+
+	var newMeasure Measure
+	for _, unit := range foundGrouping {
+		measure, err := m.To(unit)
+		if err != nil {
+			continue
+		}
+		if measure.Amount >= 1 && (newMeasure == Measure{} || measure.Amount < newMeasure.Amount) {
+			newMeasure = measure
+		}
+	}
+
+	return newMeasure
+}
+
 // AmountString returns a human-readable string of the amount only
-func (m *Measure) AmountString() string {
+func (m Measure) AmountString() string {
 	numerator, denominator := FloatToFraction(m.Amount)
 	if numerator > 0 {
 		if m.Amount < 1 {
@@ -92,6 +128,6 @@ func (m *Measure) AmountString() string {
 }
 
 // String returns a human-readable string of the measure
-func (m *Measure) String() string {
+func (m Measure) String() string {
 	return strings.TrimSpace(m.AmountString() + m.Unit.Symbol() + " " + m.Name)
 }

@@ -59,3 +59,17 @@ func TestMeasure_String(t *testing.T) {
 
 	assert.Equal(t, "1/2g Salt", m.String())
 }
+
+func TestMeasure_Nice(t *testing.T) {
+	m := Measure{1000 * 1000, Millimeter, "Travel", false}
+	m = m.Nice()
+
+	assert.Equal(t, Kilometer, m.Unit)
+	assert.Equal(t, 1.0, m.Amount)
+
+	m = Measure{0.000001, Kilometer, "Travel", false}
+	m = m.Nice()
+
+	assert.Equal(t, Millimeter, m.Unit)
+	assert.Equal(t, 1.0, m.Amount)
+}
